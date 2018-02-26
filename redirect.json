@@ -1,0 +1,13 @@
+[
+    {
+        "path": "/",
+        "target": "https://www.google.co.th",
+        "code": 301
+    },
+    {
+        "path": "/medium",
+        "target": "https://medium.com",
+        "code": 308
+    }
+
+]
