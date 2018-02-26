@@ -5,8 +5,8 @@ localhost:8080:
 - path: "/medium"
   target: https://medium.com
   code: 308
-- path: acoshift.me/abc
-  target: https://medium.com
+- path: /abc
+  target: http://www.designil.com/low-calorie-ui-web-design.html
   code: 308
 abc.com:
 - path: "/"

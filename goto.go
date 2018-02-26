@@ -27,14 +27,6 @@ type route struct {
 var port = flag.Int("port", 8080, "Port to serve goto redirect backend")
 
 func main() {
-	raw, _ := ioutil.ReadFile("redirect.yaml")
-	err := yaml.Unmarshal(raw, &routes)
-
-	log.Println(routes)
-
-	if err != nil {
-		log.Println(err)
-	}
 
 	http.HandleFunc("/", redirectHandler)
 
@@ -66,7 +58,17 @@ func main() {
 	}
 }
 
+func getConfig() {
+	raw, _ := ioutil.ReadFile("redirect.yaml")
+	err := yaml.Unmarshal(raw, &routes)
+
+	if err != nil {
+		log.Println(err)
+	}
+}
+
 func redirectHandler(w http.ResponseWriter, r *http.Request) {
+	getConfig()
 	host := r.Header.Get("X-Forwarded-Host")
 	if len(host) == 0 {
 		host = r.Host
